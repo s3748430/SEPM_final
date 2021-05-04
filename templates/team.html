@@ -1,0 +1,20 @@
+{% extends "layout.html" %} {% block content %}
+    <head>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/team.css') }}">
+    </head>
+    <div class="flex items-center mx-auto max-w-6xl" style="height: 80vh">
+
+        <main class="px-4">
+            <div class="team-container promo">
+                <h1><b><u>About Us</u></b></h1>
+                <div class="container-sm">
+                    <p>
+                        The goal of our project is to help people predict salary based on their position and occupation.
+                        To make our project to be used by anyone, the web-based application is suitable since users can
+                        gain access to it as long as they have an internet connection and a personal computer.
+                    </p>
+                </div>
+            </div>
+        </main>
+    </div>
+{% endblock %}

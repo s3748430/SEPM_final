@@ -1,33 +1,46 @@
-<html>
-<h1><center>Job Salary Predictor for Data Related Positions</center></h1>
-<h5><center>*This predictor was built based on around 1000 data related full job descriptions in 1st half 2020 so it might not reflect the current salary range. </center><h5>
-<br>
-<br>
+<!doctype html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com"/>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+          rel="stylesheet"/>
+    <link href="../static/css/style.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.2/alpine.js"
+            integrity="sha512-No22QdEJ4zlXvdQDpm6oeXcjwajpNxvnstx6NEU/5qZFysa5gsgj/bSfAFpSc9Za5LjbgQLRXyCeY53aWmk8ZA=="
+            crossorigin="anonymous"></script>
+    <title>Home</title>
+</head>
+<body class="container mx-auto">
+<div class="flex justify-center">
+    <div class="text-center my-12 grid gap-y-12">
+        <h1 class="text-7xl">Job Salary Predictor for Data Related Positions</h1>
+        <h5 class="text-5xl">This is only a testing website, finalize website will be different.</h5>
+    </div>
+</div>
 <form action="{{ url_for('salary_predictor') }}" method="post">
-	<center><h3> Please enter a full job description below </h3></center>
-	<br>
-	<center><textarea class="bg-gray-200 focus:outline-none rounded-md w-full px-3 py-3" id="description" name="description" rows="10" cols="100" wrap="hard">
-		
-	</textarea> </center>
-	<br>
-	<center><button id="analyze"> Analyze Job </button></center>
+    <h3 class="text-center text-4xl mb-10"> Please enter a full job description below </h3>
+    <label for="description"></label>
+    <textarea type="text" placeholder="Large Input"
+              class="px-3 py-4 placeholder-blueGray-300 text-blueGray-800 relative bg-white bg-white rounded text-base border border-blueGray-800 outline-none focus:outline-none focus:shadow-outline w-full"
+              id="description"
+              name="description" rows="10" cols="100" wrap="hard">
+	</textarea>
+    <button class="bg-indigo-500 text-white active:bg-indigo-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            id="analyze"> Analyze Job
+    </button>
 </form>
-<br>
-<br>
-<center><h4><span id='most-common-words'></span></h4></center>
+<h4><span id='most-common-words'></span></h4>
 <br>
 {% if show_word_cloud %}
-<img src="data:image/png;base64,{{ plot_url }}"></img>
+    <img src="data:image/png;base64,{{ plot_url }}"/>
 {% endif %}
 <br>
-<center><h4><span id='salary_prediction_text'>{{salary_prediction_text}}</span></h4></center>
+<h4><span id='salary_prediction_text'>{{ salary_prediction_text }}</span></h4>
 <br>
-<center><span id='salary-range'>{{salaryRange}}</span></center>
-
+<span id='salary-range'>{{ salaryRange }}</span>
+</body>
 </html>
 
-<script> 
-
-
-									
-</script>
+doi xiu nha dang nch voi bang
+lam tiep di

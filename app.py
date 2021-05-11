@@ -55,61 +55,61 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def salary_predictor():
-	description = request.form.get('description')
-	result = model.predict(tfidf_vectorizer.transform([description]))
-	
-	return render_template('home.html', salaryRange = labels[result[0]], show_word_cloud=True, salary_prediction_text="The salary range of this job:")
+    description = request.form.get('description')
+    result = model.predict(tfidf_vectorizer.transform([description]))
+
+    return render_template('home.html', salaryRange = labels[result[0]], show_word_cloud=True, salary_prediction_text="The salary range of this job:")
 
 
 @app.route('/predict')
 def generate_word_cloud(description):
 
-	
-	stopwords = set(STOPWORDS)
-	stopwords.update(["to","sex","may","Ability to","Full time","Experience with", "Job Type"])
 
-	wordcloud = WordCloud(stopwords = stopwords, max_font_size=50, max_words=100, background_color='white').generate(description)
+    stopwords = set(STOPWORDS)
+    stopwords.update(["to","sex","may","Ability to","Full time","Experience with", "Job Type"])
 
-	img = io.StringIO()
-	plt.figure(figsize=(8,6))
-	plt.imshow(wordcloud, interpolation='bilinear')
-	plt.axis('off')
+    wordcloud = WordCloud(stopwords = stopwords, max_font_size=50, max_words=100, background_color='white').generate(description)
 
-	#Save it to a temporary buffer
-	plt.savefig(img, format='png')
-	img.seek(0)
+    img = io.StringIO()
+    plt.figure(figsize=(8,6))
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis('off')
 
-	plot_url = base64.b64encode(img.getvalue())
-	return render_template('home.html', plot_url=plot_url)
-	
+    #Save it to a temporary buffer
+    plt.savefig(img, format='png')
+    img.seek(0)
+
+    plot_url = base64.b64encode(img.getvalue())
+    return render_template('home.html', plot_url=plot_url)
+
 
 
 """
 
 @app.route('/predict', methods=['POST'])
 def salary_predictor():
-	description = request.form.get('description')
-	result = model.predict(tfidf_vectorizer.transform([description]))
-	generate_word_cloud(description)
-	return render_template('home.html', salaryRange = labels[result[0]], url="/static/images/word_cloud.png", show_word_cloud=True, salary_prediction_text="The salary range of this job:")
+    description = request.form.get('description')
+    result = model.predict(tfidf_vectorizer.transform([description]))
+    generate_word_cloud(description)
+    return render_template('home.html', salaryRange = labels[result[0]], url="/static/images/word_cloud.png", show_word_cloud=True, salary_prediction_text="The salary range of this job:")
 
 
 
 def generate_word_cloud(description):
 
-	
-	stopwords = set(STOPWORDS)
-	stopwords.update(["to","sex","may","Ability to","Full time","Experience with", "Job Type"])
+    
+    stopwords = set(STOPWORDS)
+    stopwords.update(["to","sex","may","Ability to","Full time","Experience with", "Job Type"])
 
-	wordcloud = WordCloud(stopwords = stopwords, max_font_size=50, max_words=100, background_color='white').generate(description)
+    wordcloud = WordCloud(stopwords = stopwords, max_font_size=50, max_words=100, background_color='white').generate(description)
 
-	plt.figure(figsize=(8,6))
-	plt.imshow(wordcloud, interpolation='bilinear')
-	plt.axis('off')
+    plt.figure(figsize=(8,6))
+    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.axis('off')
 
-	#Save it to a temporary buffer
-	plt.savefig('static/images/word_cloud.png')
-	
+    #Save it to a temporary buffer
+    plt.savefig('static/images/word_cloud.png')
+    
 
 
 return render_template('home.html', salaryRange = labels[result[0]], salary_prediction_text="The salary range of this job:")
@@ -117,4 +117,4 @@ img = base64.encodebytes(buf.getvalue()).decode("ascii")
 """
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')

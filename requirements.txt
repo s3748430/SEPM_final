@@ -11,6 +11,7 @@ sklearn
 wordcloud
 joblib
 Pillow
+gunicorn==20.1.0
 
 
 # ----------------------
